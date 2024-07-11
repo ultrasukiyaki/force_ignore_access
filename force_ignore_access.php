@@ -1,15 +1,15 @@
 <?php
 class IgnoreAccess
 {
-        public $hosts_list = array();
-        public $ua_list    = array();
-        public $ref_list   = array();
+        public $hosts_list = [];
+        public $ua_list    = [];
+        public $ref_list   = [];
         private function set_403()
         {
                 header("HTTP",true,403);
                 exit(1);
         }
-        private function check_array($array=array())
+        private function check_array($array=[])
         {
                 if (is_array($array)!==FALSE && count($array)>0)
                 {
@@ -79,23 +79,23 @@ class IgnoreAccess
 }
 $my_ignore_access = new IgnoreAccess;
  
-$my_ignore_access->hosts_list = array(
+$my_ignore_access->hosts_list = [
         "ignore_host_a.net",
         "ignore_host_b.net",
         "ignore_host_c.net"
-);
+];
  
-$my_ignore_access->ua_list = array(
+$my_ignore_access->ua_list = [
         "ignore_ua_a",
         "ignore_ua_b",
         "ignore_ua_c"
-);
+];
  
-$my_ignore_access->ref_list = array(
+$my_ignore_access->ref_list = [
         "ignore_referer_a.net",
         "ignore_referer_b.net",
         "ignore_referer_c.net"
-);
+];
  
 $ignore_point["ip"]      = (isset($_SERVER["REMOTE_ADDR"]))     ? $_SERVER["REMOTE_ADDR"]      : NULL;
 $ignore_point["ua"]      = (isset($_SERVER["HTTP_USER_AGENT"])) ? $_SERVER["HTTP_USER_AGENT"]  : NULL;
